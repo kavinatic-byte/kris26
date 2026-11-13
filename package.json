@@ -1,0 +1,21 @@
+{
+  "name": "kris26",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "start": "wrangler dev",
+    "test": "vitest",
+    "cf-typegen": "wrangler types"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.18.4",
+    "@types/node": "^26.0.1",
+    "@vitest/browser": "^4.1.10",
+    "@vitest/ui": "^4.1.10",
+    "typescript": "^5.5.2",
+    "vitest": "^4.1.10",
+    "wrangler": "^4.110.0"
+  }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux Terminal — Mini Games</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/css/linux.css">
+</head>
+<body class="linux-body">
+
+<div class="linux-page">
+  <!-- Terminal -->
+  <div class="terminal-pane">
+    <div class="terminal-header">
+      <span class="dot dot-red"></span>
+      <span class="dot dot-yellow"></span>
+      <span class="dot dot-green"></span>
+      <span class="title">guest@linux-challenge:~</span>
+    </div>
+    <div class="terminal-output" id="terminalOutput"></div>
+    <div class="terminal-input-line">
+      <span class="prompt" id="promptDisplay">~$ </span>
+      <input type="text" id="terminalInput" placeholder="Type a command..." autofocus autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    </div>
+  </div>
+
+  <!-- Side Panel -->
+  <div class="side-panel">
+    <a href="/" class="back-link-linux">← Back to Menu</a>
+    <h3>📖 Commands</h3>
+    <ul class="cmd-list">
+      <li>
+        <div class="cmd-name">ls</div>
+        <div class="cmd-desc">Type <b>ls</b> and press Enter. It shows you what files and folders are in your current location — like opening a folder in File Explorer to see what's inside. Try it right now!</div>
+        <div class="cmd-example">$ ls</div>
+      </li>
+      <li>
+        <div class="cmd-name">cd &lt;folder&gt;</div>
+        <div class="cmd-desc"><b>cd</b> stands for "change directory". It moves you into a different folder. Type <b>cd</b>, a space, then the folder name. To go back up one level, type <b>cd ..</b> (two dots).</div>
+        <div class="cmd-example">$ cd myfolder</div>
+      </li>
+      <li>
+        <div class="cmd-name">cat &lt;file&gt;</div>
+        <div class="cmd-desc"><b>cat</b> dumps the entire contents of a file onto the screen all at once. Useful for short files, but for long files it will flood your terminal — you'll want to use head or tail instead.</div>
+        <div class="cmd-example">$ cat notes.txt</div>
+      </li>
+      <li>
+        <div class="cmd-name">head &lt;file&gt;</div>
+        <div class="cmd-desc"><b>head</b> shows you only the beginning (the "head") of a file — just the first few lines. Handy when a file is too long for cat and you only care about how it starts.</div>
+        <div class="cmd-example">$ head data.log</div>
+      </li>
+      <li>
+        <div class="cmd-name">tail &lt;file&gt;</div>
+        <div class="cmd-desc"><b>tail</b> is the opposite of head — it shows you the last few lines at the end of a file. Perfect for checking what was most recently added to a log.</div>
+        <div class="cmd-example">$ tail access.log</div>
+      </li>
+      <li>
+        <div class="cmd-name">grep &lt;word&gt; &lt;file&gt;</div>
+        <div class="cmd-desc"><b>grep</b> searches through a file and prints every line that contains the word or phrase you give it. Think of it as Ctrl+F for the terminal — great for finding one needle in a haystack.</div>
+        <div class="cmd-example">$ grep error app.log</div>
+      </li>
+    </ul>
+
+    <div class="flag-section">
+      <h3>🚩 Submit Flag</h3>
+      <div class="flag-input-row">
+        <input type="text" id="flagInput" placeholder="Enter the flag..." autocomplete="off">
+        <button class="flag-submit-btn" id="flagSubmit">Submit</button>
+      </div>
+      <div style="font-size:0.8rem;margin-top:0.25rem" id="flagMsg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Win Overlay -->
+<div class="win-overlay" id="winOverlay">
+  <div class="win-card">
+    <div class="trophy">🐧</div>
+    <h2>You got it!</h2>
+    <p>You've mastered the Linux terminal basics.</p>
+    <button class="flag-submit-btn" id="playAgain" style="font-size:1rem;padding:0.75rem 2rem">Play Again</button>
+  </div>
+</div>
+
+<script src="/js/linux.js"></script>
+</body>
+</html>

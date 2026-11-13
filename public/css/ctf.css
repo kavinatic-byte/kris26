@@ -1,0 +1,199 @@
+/* ========== CTF Challenge ========== */
+
+.ctf-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.ctf-intro {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.ctf-intro .skull {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.ctf-intro h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+  background: linear-gradient(135deg, #dc2626, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ctf-intro p {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+/* ========== Challenge Cards ========== */
+
+.challenge-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+  border-left: 4px solid #e2e8f0;
+  transition: border-color 0.3s;
+}
+
+.challenge-card.solved {
+  border-left-color: #10b981;
+}
+
+.challenge-card.locked {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.challenge-card .part-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  margin-bottom: 0.5rem;
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.challenge-card.solved .part-badge {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.challenge-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+  color: #1e293b;
+}
+
+.challenge-card .hint-text {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* Part 1: hidden text (same color as card background) */
+.hidden-clue {
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  user-select: text;
+}
+
+/* Part 3: button row */
+.ctf-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.ctf-btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #475569;
+  text-decoration: none;
+  transition: all 0.15s;
+  display: inline-block;
+}
+
+.ctf-btn:hover {
+  border-color: #8b5cf6;
+  color: #8b5cf6;
+}
+
+.ctf-btn.broken {
+  opacity: 0.4;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+/* Password input row */
+.pw-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.pw-row input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: 'Courier New', monospace;
+  outline: none;
+  background: #f8fafc;
+  transition: border-color 0.15s;
+}
+
+.pw-row input:focus {
+  border-color: #8b5cf6;
+}
+
+.pw-submit {
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: #8b5cf6;
+  color: #fff;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+
+.pw-submit:hover { opacity: 0.9; }
+.pw-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.pw-feedback {
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  min-height: 1.2em;
+}
+
+.pw-feedback.error { color: #dc2626; }
+.pw-feedback.success { color: #059669; }
+
+/* ========== Win Overlay ========== */
+
+.ctf-win-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+.ctf-win-overlay.active { display: flex; }
+
+.ctf-win-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 0 40px rgba(220,38,38,0.15);
+}
+
+.ctf-win-card .flag-icon { font-size: 4rem; margin-bottom: 1rem; }
+.ctf-win-card h2 { font-size: 1.8rem; color: #dc2626; margin-bottom: 0.5rem; }
+.ctf-win-card p { color: #64748b; margin-bottom: 1.5rem; }

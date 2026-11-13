@@ -1,0 +1,299 @@
+/* ========== Sorting Game ========== */
+
+/* Setup Screen */
+.setup-card {
+  text-align: center;
+}
+
+.setup-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.setup-card p {
+  color: #64748b;
+  margin-bottom: 1.5rem;
+}
+
+.n-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.n-btn {
+  width: 44px;
+  height: 44px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #475569;
+  transition: all 0.15s;
+}
+
+.n-btn:hover {
+  border-color: #8b5cf6;
+  color: #8b5cf6;
+}
+
+.n-btn.selected {
+  background: #8b5cf6;
+  color: #fff;
+  border-color: #8b5cf6;
+}
+
+/* Game Board */
+.game-board {
+  display: none;
+}
+
+.game-board.active {
+  display: block;
+}
+
+.slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.slot {
+  width: 64px;
+  height: 80px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: 2px solid transparent;
+  position: relative;
+  user-select: none;
+}
+
+.slot:hover {
+  border-color: #c4b5fd;
+}
+
+/* compared state — subtle, overridden by selected */
+.slot.compared {
+  border-color: #f59e0b;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 0 0 3px rgba(245,158,11,0.15);
+}
+
+/* selected takes priority over compared */
+.slot.selected {
+  border-color: #8b5cf6;
+  background: #f5f3ff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 0 0 3px rgba(139,92,246,0.15);
+}
+
+/* both selected and compared: purple border + yellow corner dot */
+.slot.selected.compared {
+  border-color: #8b5cf6;
+  background: #f5f3ff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 0 0 3px rgba(139,92,246,0.15);
+}
+
+.slot.selected.compared::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f59e0b;
+}
+
+/* Swap animation */
+@keyframes swapPop {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.15); }
+  60%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.slot.swapping {
+  animation: swapPop 0.35s ease;
+}
+
+/* Drag & drop */
+.slot.dragging {
+  opacity: 0.4;
+  transform: scale(0.92);
+}
+
+.slot.drag-over {
+  border-style: dashed;
+  border-color: #8b5cf6;
+  background: #f5f3ff;
+  transform: scale(1.05);
+}
+
+.slot.correct {
+  border-color: #10b981;
+  background: #ecfdf5;
+}
+
+.slot.wrong {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.slot .value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #cbd5e1;
+}
+
+.slot .pos-label {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.slot.correct .value {
+  color: #10b981;
+}
+
+.slot.wrong .value {
+  color: #ef4444;
+}
+
+/* Controls */
+.controls {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  margin-bottom: 1rem;
+}
+
+.selected-positions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #64748b;
+  min-height: 2rem;
+}
+
+.selected-positions span {
+  color: #8b5cf6;
+  font-size: 1.1rem;
+}
+
+.btn-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+}
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-compare {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+.btn-compare:hover:not(:disabled) {
+  background: #ddd6fe;
+}
+
+.btn-swap {
+  background: #fce7f3;
+  color: #be185d;
+}
+
+.btn-swap:hover:not(:disabled) {
+  background: #fbcfe8;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  padding: 0.6rem 2rem;
+  font-size: 1rem;
+}
+
+.btn-submit:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 1rem 0;
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.stats .num {
+  color: #8b5cf6;
+}
+
+/* Win Screen */
+.win-screen {
+  display: none;
+  background: #fff;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+  text-align: center;
+}
+
+.win-screen.active {
+  display: block;
+}
+
+.win-screen .trophy {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.win-screen h2 {
+  font-size: 1.8rem;
+  color: #059669;
+  margin-bottom: 0.5rem;
+}
+
+.win-screen .stats-final {
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 480px) {
+  .slot { width: 52px; height: 68px; }
+  .slot .value { font-size: 1.2rem; }
+}

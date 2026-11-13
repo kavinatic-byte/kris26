@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTF Challenge — Mini Games</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/ctf.css">
+</head>
+<body>
+
+<div class="ctf-page">
+<a href="/" class="back-link">← Back to Menu</a>
+
+<div class="ctf-intro">
+  <span class="skull">🏴</span>
+  <h1>Capture The Flag</h1>
+  <p>Find the hidden passwords to progress through all 4 parts.</p>
+</div>
+
+<!-- Part 1: Hidden in Plain Sight -->
+<div class="challenge-card" data-part="1">
+  <span class="part-badge">Part 1</span>
+  <h3>Hidden in Plain Sight</h3>
+  <p class="hint-text">Sometimes the answer is right in front of you — you just can't see it. </p>
+  <div class="hint-text" style="margin-bottom:1rem">
+    <span class="hidden-clue">hidden_in_plain_sight</span>
+  </div>
+  <div class="pw-row">
+    <input type="text" placeholder="Enter password..." autocomplete="off">
+    <button class="pw-submit">Submit</button>
+  </div>
+  <div class="pw-feedback"></div>
+</div>
+
+<!-- Part 2: Source Inspection -->
+<div class="challenge-card locked" data-part="2">
+  <span class="part-badge">Part 2</span>
+  <h3>Behind the Curtain</h3>
+  <p class="hint-text">Not everything is visible on the surface. Sometimes secrets are hidden where only developers look. Check places the eye doesn't normally go.</p>
+  <!-- The password for part 2 is: html_secrets_revealed -->
+  <div class="pw-row">
+    <input type="text" placeholder="Enter password..." autocomplete="off">
+    <button class="pw-submit">Submit</button>
+  </div>
+  <div class="pw-feedback"></div>
+</div>
+
+<!-- Part 3: Broken Buttons -->
+<div class="challenge-card locked" data-part="3">
+  <span class="part-badge">Part 3</span>
+  <h3>Follow the Trail</h3>
+  <p class="hint-text">Four buttons, but only three work. What happens if you try to reach the fourth one by a different route?</p>
+  <div class="ctf-buttons">
+    <a href="/ctf/history" class="ctf-btn" target="_blank">History</a>
+    <a href="/ctf/pricing" class="ctf-btn" target="_blank">Pricing</a>
+    <a href="/ctf/ai" class="ctf-btn" target="_blank">AI</a>
+    <span class="ctf-btn broken" title="This button is broken">Password</span>
+  </div>
+  <div class="pw-row">
+    <input type="text" placeholder="Enter password..." autocomplete="off">
+    <button class="pw-submit">Submit</button>
+  </div>
+  <div class="pw-feedback"></div>
+</div>
+
+<!-- Part 4: Code Secrets -->
+<div class="challenge-card locked" data-part="4">
+  <span class="part-badge">Part 4</span>
+  <h3>Trust No Code</h3>
+  <p class="hint-text">Client-side code is never truly secret. What can you learn by inspecting the JavaScript that runs this page?</p>
+  <div class="pw-row">
+    <input type="text" placeholder="Enter password..." autocomplete="off">
+    <button class="pw-submit">Submit</button>
+  </div>
+  <div class="pw-feedback"></div>
+</div>
+
+</div>
+
+<!-- Win Overlay -->
+<div class="ctf-win-overlay" id="winOverlay">
+  <div class="ctf-win-card">
+    <div class="flag-icon">🏴‍☠️</div>
+    <h2>All Flags Captured!</h2>
+    <p>You found every hidden password. You're a true CTF champion.</p>
+    <button class="pw-submit" onclick="location.reload()" style="font-size:1rem;padding:0.75rem 2rem">Play Again</button>
+  </div>
+</div>
+
+<script src="/js/ctf.js"></script>
+</body>
+</html>

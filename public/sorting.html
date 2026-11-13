@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorting Challenge — Mini Games</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/sorting.css">
+</head>
+<body class="game-page">
+  <a href="/" class="back-link">← Back to Menu</a>
+  <h1 class="game-heading">🔢 Sorting Challenge</h1>
+  <p class="game-desc">Hidden numbers need sorting! Compare or swap them to find the right order.</p>
+
+  <!-- Setup Screen -->
+  <div class="card setup-card" id="setup">
+    <h2>Choose difficulty</h2>
+    <p>How many numbers do you want to sort?</p>
+    <div class="n-selector" id="nSelector"></div>
+    <button class="btn-primary" id="startBtn" disabled>Start Game</button>
+  </div>
+
+  <!-- Game Board -->
+  <div class="game-board" id="gameBoard">
+    <div class="slots" id="slots"></div>
+    <div class="controls">
+      <div class="selected-positions" id="selectedDisplay">Select two positions</div>
+      <div class="btn-row">
+        <button class="action-btn btn-compare" id="compareBtn" disabled>🔍 Compare</button>
+        <button class="action-btn btn-swap" id="swapBtn" disabled>🔄 Swap</button>
+      </div>
+    </div>
+    <div class="stats">
+      <span>Comparisons: <span class="num" id="compCount">0</span></span>
+      <span>Swaps: <span class="num" id="swapCount">0</span></span>
+      <span>Moves: <span class="num" id="moveCount">0</span></span>
+    </div>
+    <div class="message" id="message"></div>
+    <div style="text-align:center;margin-top:0.5rem">
+      <button class="action-btn btn-submit" id="submitBtn">✅ Submit Solution</button>
+    </div>
+  </div>
+
+  <!-- Win Screen -->
+  <div class="win-screen" id="winScreen">
+    <div class="trophy">🏆</div>
+    <h2>Congratulations!</h2>
+    <p class="stats-final" id="winStats"></p>
+    <button class="btn-primary" id="playAgainBtn">🔄 Play Again</button>
+  </div>
+
+  <script src="/js/sorting.js"></script>
+</body>
+</html>
